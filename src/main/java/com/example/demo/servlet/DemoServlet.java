@@ -1,0 +1,15 @@
+package com.example.demo.servlet;
+
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import java.io.IOException;
+
+@WebServlet("/demo")
+public class DemoServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        resp.setStatus(200);
+        resp.getWriter().write("OK");
+    }
+}
