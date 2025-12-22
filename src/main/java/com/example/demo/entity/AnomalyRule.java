@@ -1,41 +1,17 @@
-// src/main/java/com/example/demo/entity/AnomalyRule.java
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "anomaly_rules", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"ruleCode"})
-})
 public class AnomalyRule {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(nullable = false)
-    private String ruleCode; // e.g., LOW_SCORE, SPIKE
-
-    private String description;
-
-    @Column(nullable = false)
-    private String thresholdType; // e.g., SCORE_BELOW
-
-    @Column(nullable = false)
+    private String ruleCode;
     private Double thresholdValue;
-
-    @Column(nullable = false)
     private Boolean active = true;
 
-    public AnomalyRule() {}
+    public String getRuleCode() { return ruleCode; }
+    public void setRuleCode(String ruleCode) { this.ruleCode = ruleCode; }
 
-    public AnomalyRule(String ruleCode, String description, String thresholdType, Double thresholdValue, Boolean active) {
-        this.ruleCode = ruleCode;
-        this.description = description;
-        this.thresholdType = thresholdType;
-        this.thresholdValue = thresholdValue;
-        this.active = active;
-    }
+    public Double getThresholdValue() { return thresholdValue; }
+    public void setThresholdValue(Double thresholdValue) { this.thresholdValue = thresholdValue; }
 
-    // Getters and setters...
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }
