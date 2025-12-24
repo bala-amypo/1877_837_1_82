@@ -1,9 +1,11 @@
 // src/main/java/com/example/demo/dto/ProductivityMetricDto.java
 package com.example.demo.dto;
 
+import lombok.Data;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+@Data
 public class ProductivityMetricDto {
     private Long id;
     private Long employeeId;
@@ -14,5 +16,4 @@ public class ProductivityMetricDto {
     private Double productivityScore;
     private String rawDataJson;
     private LocalDateTime submittedAt;
-    // Getters and setters...
 }

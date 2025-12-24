@@ -1,8 +1,10 @@
 // src/main/java/com/example/demo/dto/AnomalyFlagDto.java
 package com.example.demo.dto;
 
+import lombok.Data;
 import java.time.LocalDateTime;
 
+@Data
 public class AnomalyFlagDto {
     private Long id;
     private Long employeeId;
@@ -12,5 +14,4 @@ public class AnomalyFlagDto {
     private String details;
     private LocalDateTime flaggedAt;
     private Boolean resolved;
-    // Getters and setters...
 }
