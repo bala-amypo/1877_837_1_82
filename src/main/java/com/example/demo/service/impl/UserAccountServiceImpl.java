@@ -32,11 +32,13 @@ public class UserAccountServiceImpl implements UserAccountService {
 
     @Override
     public UserAccount findByEmail(String email) {
-        return userRepo.findByEmail(email).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return userRepo.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 
     @Override
     public UserAccount findById(Long id) {
-        return userRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return userRepo.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
     }
 }
