@@ -2,18 +2,8 @@ package com.example.demo.util;
 
 public class ProductivityCalculator {
 
-    // private constructor for utility class
     private ProductivityCalculator() {
     }
-
-    /**
-     * Formula:
-     * score = (hours * 10) + (tasks * 5) + (meetings * 2)
-     * Rules:
-     * - Negative or NaN values treated as 0
-     * - Score clamped between 0 and 100
-     * - Rounded to 2 decimal places
-     */
     public static double computeScore(double hours, int tasks, int meetings) {
 
         // sanitize inputs
