@@ -22,7 +22,6 @@
         <java.version>17</java.version>
     </properties>
 
-    <!-- ✅ Only one dependencies block -->
     <dependencies>
         <!-- Spring Boot starter JPA -->
         <dependency>
@@ -57,24 +56,19 @@
             <artifactId>spring-security-crypto</artifactId>
             <version>5.7.3</version>
         </dependency>
-		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
-<dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-    <version>2.8.13</version>
-</dependency>
 
         <!-- Springdoc OpenAPI (Swagger UI) -->
-        <!-- <dependency>
+        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.3.0</version>
-        </dependency> -->
+            <version>2.8.13</version>
+        </dependency>
 
-        <!-- MySQL driver (runtime) -->
+        <!-- ✅ MySQL driver (runtime) with version -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
             <scope>runtime</scope>
         </dependency>
 
