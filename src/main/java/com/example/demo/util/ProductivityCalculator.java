@@ -2,23 +2,30 @@ package com.example.demo.util;
 
 public class ProductivityCalculator {
 
+    // private constructor for utility class
     private ProductivityCalculator() {
-        // utility class
     }
 
     /**
      * Formula:
      * score = (hours * 10) + (tasks * 5) + (meetings * 2)
      * Rules:
-     * - Negative or NaN inputs treated as 0
+     * - Negative or NaN values treated as 0
      * - Score clamped between 0 and 100
      * - Rounded to 2 decimal places
      */
     public static double computeScore(double hours, int tasks, int meetings) {
 
-        if (Double.isNaN(hours) || hours < 0) hours = 0;
-        if (tasks < 0) tasks = 0;
-        if (meetings < 0) meetings = 0;
+        // sanitize inputs
+        if (Double.isNaN(hours) || hours < 0) {
+            hours = 0;
+        }
+        if (tasks < 0) {
+            tasks = 0;
+        }
+        if (meetings < 0) {
+            meetings = 0;
+        }
 
         double score = (hours * 10) + (tasks * 5) + (meetings * 2);
 
@@ -31,8 +38,6 @@ public class ProductivityCalculator {
         }
 
         // round to 2 decimals
-        score = Math.round(score * 100.0) / 100.0;
-
-        return score;
+        return Math.round(score * 100.0) / 100.0;
     }
 }
