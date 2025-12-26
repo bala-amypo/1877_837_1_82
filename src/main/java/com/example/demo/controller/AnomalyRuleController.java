@@ -1,11 +1,8 @@
-// src/main/java/com/example/demo/controller/AnomalyRuleController.java
 package com.example.demo.controller;
 
-import com.example.demo.dto.AnomalyRuleDto;
-import com.example.demo.entity.AnomalyRule;
-import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.model.AnomalyRule;
 import com.example.demo.service.AnomalyRuleService;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,41 +11,30 @@ import java.util.List;
 @RequestMapping("/api/anomaly-rules")
 public class AnomalyRuleController {
 
-    private final AnomalyRuleService ruleService;
+    private final AnomalyRuleService service;
 
-    public AnomalyRuleController(AnomalyRuleService ruleService) {
-        this.ruleService = ruleService;
+    public AnomalyRuleController(AnomalyRuleService service) {
+        this.service = service;
     }
 
     @PostMapping
-    public AnomalyRule create(@RequestBody AnomalyRuleDto dto) {
-        AnomalyRule rule = new AnomalyRule(dto.getRuleCode(), dto.getDescription(),
-                dto.getThresholdType(), dto.getThresholdValue(), dto.getActive());
-        return ruleService.createRule(rule);
+    public AnomalyRule create(@RequestBody AnomalyRule rule) {
+        return service.createRule(rule);
     }
 
     @PutMapping("/{id}")
-    public AnomalyRule update(@PathVariable Long id, @RequestBody AnomalyRuleDto dto) {
-        AnomalyRule updated = new AnomalyRule(dto.getRuleCode(), dto.getDescription(),
-                dto.getThresholdType(), dto.getThresholdValue(), dto.getActive());
-        return ruleService.updateRule(id, updated);
+    public AnomalyRule update(@PathVariable Long id,
+                              @RequestBody AnomalyRule rule) {
+        return service.updateRule(id, rule);
     }
 
     @GetMapping("/active")
-    public List<AnomalyRule> active() {
-        return ruleService.getActiveRules();
-    }
-
-    @GetMapping("/{id}")
-    public AnomalyRule get(@PathVariable Long id) {
-        return ruleService.getAllRules().stream()
-                .filter(r -> r.getId().equals(id))
-                .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Rule not found"));
+    public List<AnomalyRule> getActive() {
+        return service.getActiveRules();
     }
 
     @GetMapping
-    public List<AnomalyRule> all() {
-        return ruleService.getAllRules();
+    public List<AnomalyRule> getAll() {
+        return service.getAllRules();
     }
 }
